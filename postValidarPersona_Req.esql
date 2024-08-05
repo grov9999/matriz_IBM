@@ -1,0 +1,25 @@
+
+
+CREATE COMPUTE MODULE postValidarPersona_Req
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		
+		DECLARE refInput REFERENCE TO InputRoot.JSON.Data;
+		
+		--SERVICE INPUT
+		DECLARE codClt CHARACTER refInput.customerId;
+		DECLARE codPrd CHARACTER refInput.productCode;
+		DECLARE codRuc CHARACTER refInput.ruc;
+		DECLARE codMon CHARACTER refInput.currencyCode;
+		
+		--SETEAR EL INPUT
+	    
+		SET Environment.PLANO.customerId = codClt;
+		SET Environment.PLANO.productCode = codPrd;
+		SET Environment.PLANO.ruc = codRuc;
+		SET Environment.PLANO.currencyCode = codMon;
+	
+		RETURN TRUE;
+
+	END;
+END MODULE;
